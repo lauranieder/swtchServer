@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Communication with Unity</title>
+        <script src="socket.io.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>-->
+        <script type="text/javascript">
+            
+            var socket = io.connect('http://localhost:4567');
+            console.log("Connection");
+            
+            socket.on('connect', function () {
+                 console.log("Connected to Server");
+                    socket.emit('connected', { client:'webinterface'});
+                
+            });
+            
+            var clothName; 
+            
+            var colorArray = [];
+            
+            colorArray.push("rgb(240, 125, 0)");
+            colorArray.push("rgb(227, 5, 26)");
+            colorArray.push("rgb(139, 34, 31)");
+             colorArray.push("rgb(0, 73, 141)");
+             colorArray.push("rgb(25, 55, 103)");
+             colorArray.push("rgb(0, 138, 93)");
+            
+             console.log("good color  "+colorArray[1]);
+            
+             
+           
+            console.log("socket : "+socket);
+            //for(a in socket)console.log(socket[a]);
+            
+            
+            
+            
+            
+            socket.on('foundCloth', function (message) {
+              
+                 console.log("received");
+                console.log(message);
+                 console.log("cloth "+message.cloth);
+                 clothName = message.cloth;
+                $( "#clothName" ).html(clothName);
+            });
+            
+            socket.on('updateCloth', function (message) {
+              
+                 console.log("received");
+                console.log(message);
+            });
+            
+            
+            $(function() {
+                
+                AssignColorPalette();
+                function AssignColorPalette(){
+                    
+                    $( "#colorDot1" ).css("background-color", colorArray[1]);
+                    
+                    //$("#foo").append("<div>hello world</div>")
+                    
+                }
+                
+                
+                $( ".colorDot" ).onClick;
+                $( ".colorDot" ).click(function() {
+                  
+                    var selectedColor = $(this).css( "background-color" );
+                    console.log("color background: "+$(this));
+                    console.log("selected color   "+selectedColor );
+                    socket.emit('setColor', { client:'unity', color: selectedColor });
+                    
+                });
+                
+                
+            }); //END OF JQUERY DOM READY FUNCTION
+        </script>
+        <style type="text/css">
+         .colorDot{
+             position : relative;
+             display : block;
+             float: left;
+             width: 100px;
+             height:100px;
+              
+         }
+        #colorDot1{
+             background-color:blue;
+         }
+        #colorDot2{
+             background-color:red;
+         }
+        #colorDot3{
+             background-color:yellow;
+         }
+        
+        </style>
+    </head>
+
+    <body>
+        <!--<form id="form">
+        Message: <input size="50" id="msg"> <input type="submit" value="Submit">
+        </form>-->
+        <span id="clothName"></span>
+        <div id="colorDot1" class="colorDot"></div>
+        <div id="colorDot2" class="colorDot"></div>
+         <div id="colorDot3" class="colorDot"></div>
+    </body>
+</html>
