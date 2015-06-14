@@ -169,8 +169,10 @@ $(function() {
                     } 
 
                    $( ".imgLogo" ).click(function() {
-                        
+                         $(".imgLogo").removeClass( "selected" );
                         var selectedURL = $(this).attr('src');
+                        $(this).addClass( "selected" );
+                       
                         console.log("selectedURL   "+selectedURL );
                         socket.emit('message', { client:'unity', action:'changeImg', url: selectedURL });
                     });
@@ -182,7 +184,7 @@ $(function() {
          
             function changeCloth(newCloth){
                 console.log("Change Cloth to : "+newCloth);
-                $( "#clothName" ).html(Clothes[newCloth]['name']);  
+                //$( "#clothName" ).html(Clothes[newCloth]['name']);  
                 CreateColorPalette(Clothes[newCloth]['colors']);
             }
             
@@ -197,6 +199,7 @@ $(function() {
                     $( ".colorDot" ).click(function() {
                   
                         var selectedColor = $(this).css( "background-color" );
+                        
                         console.log("color background: "+$(this));
                         console.log("selected color   "+selectedColor );
                         socket.emit('message', { client:'unity', action:"changeColor", color: selectedColor });

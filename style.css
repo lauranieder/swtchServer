@@ -40,14 +40,24 @@ body {
 	height:20px;
  }
 .imgLogo{
-	width: 100px;
-	height:100px;  
+    margin:5px;
+    padding:5px;
+	width: 20%;
+	height:20%;  
 	border: 1px solid transparent;
+    border-radius: 25px;
 }
 .imgLogo:hover{
-	opacity: 0.5;
+	/*opacity: 0.5;*/
+    
 	border: 1px solid black;
+    border-radius: 25px;
 }
+.selected{
+    
+    background-color: yellow;
+}
+
 .field {
 	float: left;
 	width: 50%;
