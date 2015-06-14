@@ -4,6 +4,12 @@ $(function() {
             var dir = "img/";
             var imgName = [];
             var img = []; 
+    
+            //Loading images variables
+            //var display = true;
+            var bar = $('.bar');
+            var percent = $('.percent');
+            var status = $('#status');
         
             //Connect to node server
             var socket = io.connect('http://localhost:4567');
@@ -149,6 +155,10 @@ $(function() {
             getImage();
                 
             function getImage(){
+                
+                 $('#containerLogo').empty();
+                $('#containerLogoUpload').empty();
+                
                  $.ajax({
                   url: "filesManager.php?action=LoadImage",
 
@@ -165,7 +175,10 @@ $(function() {
 
                          //Push value in an array
                         imgName.push(absoluteFilename);
+                         //Choose logo
                         $("#containerLogo").append($('<img class="imgLogo" src="'+ dir + absoluteFilename + '"></img>'));
+                         //upload/modifiy logo
+                         createForm(absoluteFilename);
                     } 
 
                    $( ".imgLogo" ).click(function() {
@@ -176,11 +189,81 @@ $(function() {
                         console.log("selectedURL   "+selectedURL );
                         socket.emit('message', { client:'unity', action:'changeImg', url: selectedURL });
                     });
+                     
+                     
+                      //DELETE FORM
+                    $('.delete').ajaxForm({
+                        beforeSend: function() {
+                            console.log("readytodelete");
+                        },
+                        clearForm: true,        // clear all form fields after successful submit 
+                        resetForm: true,  
+                        complete: function(xhr) {
+                            console.log("File succesfuly deleted");
+    //                        console.log(xhr.responseText);
+    //                        console.log("done");
+                            status.html(JSON.parse(xhr.responseText));
+                            //location.reload(); 
+                            getImage();
+                        }
+                    });
 
                 }).fail(function() {
                   console.log("error");
                 });
              }
+    
+            
+            function createForm(absoluteFilename){
+                $form = $('<form class="delete" action="filesManager.php" method="post"></form>');
+                $form.append('<img class="imgLogo" src="' +dir+absoluteFilename+'" />');
+                $form.append('<input type="hidden" value="'+dir+absoluteFilename+'" name="delete_file" />');
+                $form.append('</br>');
+                $form.append('<label for="prenom">'+absoluteFilename+'</label>');
+                $form.append('<input type="submit" value="x" />');                      
+                $("#containerLogoUpload").append($form);    
+            }
+    
+            //SEND FORM WITH IMAGE TO PHP
+            $('#uploadfile').ajaxForm({
+
+
+
+                beforeSend: function() {
+                    status.empty();
+//                        var image = $('#image').val();
+//                        
+//                        var paths = image.split('\\');
+//                        absoluteFilename = paths[paths.length-1];
+//                        console.log("image . "+image+"  absolutefilename "+absFilename);
+                    var percentVal = '0%';
+                    bar.width(percentVal)
+                    percent.html(percentVal);
+                },
+                uploadProgress: function(event, position, total, percentComplete) {
+                    var percentVal = percentComplete + '%';
+                    bar.width(percentVal)
+                    percent.html(percentVal);
+                    //console.log(percentVal, position, total);
+                },
+                clearForm: true,        // clear all form fields after successful submit 
+                resetForm: true,  
+                complete: function(xhr) {
+//                        console.log("complete");
+//                        console.log(xhr.responseText);
+//                        console.log("done");
+
+                    status.html(JSON.parse(xhr.responseText));
+                    //location.reload();
+
+//                        createForm(absFilename);
+//                        addAjaxDelete(absFilename);
+
+
+                    getImage();
+
+                }
+            }); 
          
             function changeCloth(newCloth){
                 console.log("Change Cloth to : "+newCloth);

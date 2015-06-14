@@ -72,6 +72,12 @@ input[type=button] {
 	background-color: yellow;
 	border-radius: 5px;
 }
+input[type=submit]#submit {
+	min-width: 75px;
+	height: 50px;
+	background-color: yellow;
+	border-radius: 5px;
+}
 input[type=text] {
 	width: 75%;
 	height: 50px;
@@ -87,5 +93,12 @@ hr {
     display:block;
 	border: none;
 	border-radius: 0px;
+    
+}
+
+.delete{
+    
+    display:block;
+    position:relative;
     
 }
