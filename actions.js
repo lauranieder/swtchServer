@@ -219,7 +219,14 @@ $(function() {
                 var position = $(this).val();
                  console.log("UpdatePosition : "+position);
                 socket.emit('message', { client:'unity', action:"updatePosition", position:position });   
-            });  
+            }); 
+    
+            $( ".ChangeVet" ).click(function() { 
+               
+                var position = $(this).val();
+                 console.log("ChangeCloth : "+position);
+                socket.emit('message', { client:'unity', action:"changeCloth", name:position });   
+            }); 
            
         }); //END OF JQUERY DOM READY FUNCTION
         
