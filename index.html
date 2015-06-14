@@ -1,13 +1,16 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <meta charset="utf-8">
+     	<link rel="stylesheet" type="text/css" href="style.css" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
         <title>Communication with Unity</title>
+       
         <script src="socket.io.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript" src="gui.js"></script>
+        
          
-        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> <!--Jquery UI-->
-        <!--<script src="http://malsup.github.com/jquery.form.js"></script>  <!--Jquey Form Plugin  http://jquery.malsup.com/form/#getting-started --> 
         <script type="text/javascript">
 
             console.log("c'est le bon code");
@@ -18,7 +21,7 @@
             var img = []; 
         
             //Connect to node server
-            var socket = io.connect('http://localhost:4567');
+            var socket = io.connect('192.168.1.61:4567');
             
             //Checkin that connection is established
             socket.on('connect', function () {
@@ -206,34 +209,53 @@
                 
             }); //END OF JQUERY DOM READY FUNCTION
         </script>
-        <style type="text/css">
-         .colorDot{
-             position : relative;
-             display : block;
-             float: left;
-             width: 50px;
-             height:20px;
-              
-         }
-            
-        .imgLogo{
-            width: 100px;
-             height:100px;  
-            border: 1px solid transparent;
-        }
-        .imgLogo:hover{
-            opacity: 0.5;
-            border: 1px solid black;
-        }
         
-        
-        </style>
     </head>
-
     <body>
         <!--<form id="form">
         Message: <input size="50" id="msg"> <input type="submit" value="Submit">
         </form>-->
+       	<div id="menu">
+        	<input class="colors" type="button" value="Colors">
+        	<input class="logo" type="button" value="Logo">
+        	<input class="position" type="button" value="Position">
+        	<input class="snapshot" type="button" value="Snapshot">
+        </div>
+        <div id="main">
+        	<div id="colors">
+        		<h3>COLORS</h3>
+        	</div>
+        	<div id="logo">
+        		<h3>LOGO</h3>
+        	</div>
+        	<div id="position">
+        		<h3>POSITION</h3>
+        	</div>
+        	<div id="snapshot">
+        		<h3>SNAPSHOT</h3>
+        		<span class="field">
+        			Entreprise
+        			<input id="entreprise" type="text" value="">
+        		</span>
+        		<span class="field">
+        			Nom
+        			<input id="nom" type="text" value="">
+        		</span>
+        		<span class="field">
+        			Prénom
+        			<input id="prénom" type="text" value="">
+        		</span>
+        		<span class="field">
+        			Email
+        			<input id="email" type="text" value="">
+        		</span>
+        		<span class="field">
+        			
+        			<input id="Snapshot" type="button" value="Snapshot">
+        		</span>
+        	</div>
+        </div>
+        
         <span id="clothName"></span>
         <div id="containerColor"></div>
         <div id="containerLogo"></div>

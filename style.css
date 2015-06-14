@@ -1,0 +1,37 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+#main div{
+	width: 100%;
+	background-color: red;
+	text-align: center;
+	
+}
+#menu {
+	width: 100%;
+	background-color: lime;
+	text-align: center;
+}
+.colorDot{
+	position : relative;
+	display : block;
+	float: left;
+	width: 20%;
+	height:20px;
+ }
+.imgLogo{
+	width: 100px;
+	height:100px;  
+	border: 1px solid transparent;
+}
+.imgLogo:hover{
+	opacity: 0.5;
+	border: 1px solid black;
+}
+.field {
+	display: block;
+	background-color: blue;
+	float: left;
+	width: 100%;
+}
