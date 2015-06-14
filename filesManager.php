@@ -31,12 +31,29 @@ if(isset($_FILES['image'])){
            move_uploaded_file($file_tmp,"img/".$file_name); 
         }
         //echo "Success";
-        $feedback[] = " Success";
+        $feedback[] = "Fichier en ligne.";
         echo json_encode($feedback);
     }else{
         //print_r($errors);
         echo json_encode($errors);
     }
+}
+
+//json_encode ( mixed $value [, int $options = 0 [, int $depth = 512 ]] )
+
+//REMOVE IMAGE
+if (array_key_exists('delete_file', $_POST)) {
+  $filename = $_POST['delete_file'];
+    $feedback = array();
+  if (file_exists($filename)) {
+    unlink($filename);
+    //echo 'File '.$filename.' has been deleted';
+      $feedback[] ="Fichier ".$filename." supprime.";
+  } else {
+      $feedback[] ="Impossible de supprimer".$filename." Fichier introuvable.   ";
+    //echo 'Could not delete '.$filename.', file does not exist';
+  }
+    echo json_encode($feedback);
 }
 
 $action = isset($_GET['action']) ? $_GET['action'] : NULL;
