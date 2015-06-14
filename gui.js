@@ -10,4 +10,7 @@ $(document).ready(function() {
 			//alert($("#main").find('.'+val));
 		});
 	});
+	$("#main div").each(function() {
+		$(this).hide();
+	});
 });

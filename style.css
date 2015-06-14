@@ -1,17 +1,35 @@
+@font-face {
+	font-family: 'gotham';
+	src: url('Gotham-Book.otf');
+}
+
 body {
+	font-family: gotham;
 	margin: 0px;
 	padding: 0px;
+	color: #555;
 }
 #main div{
-	width: 100%;
-	background-color: red;
+	width: 90%;
+	margin: auto;
 	text-align: center;
-	
+	padding: 10px 0px 10px 0px;
+	border: 1px solid black;
+	border-radius: 25px;
+}
+#switcher {
+	display: block;
+	width: 20%;
+	clear: both;
+	text-align: center;
+	margin: auto;
+	padding-top: 15px;
+	padding-bottom: 20px;
 }
 #menu {
 	width: 100%;
-	background-color: lime;
 	text-align: center;
+	padding: 10px 0px 10px 0px;
 }
 .colorDot{
 	position : relative;
@@ -30,8 +48,26 @@ body {
 	border: 1px solid black;
 }
 .field {
-	display: block;
-	background-color: blue;
+	float: left;
+	width: 50%;
+}
+.field_double {
 	float: left;
 	width: 100%;
+}
+input[type=button] {
+	min-width: 100px;
+	height: 50px;
+	background-color: yellow;
+	border-radius: 5px;
+}
+input[type=text] {
+	width: 75%;
+	height: 50px;
+	font-size: 30px;
+	text-align: center;
+}
+hr {
+	border-bottom: 1px black solid;
+	border-width: 0px 0px 1px 0px;
 }

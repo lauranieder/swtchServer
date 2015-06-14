@@ -3,7 +3,7 @@
     <head>
      	<link rel="stylesheet" type="text/css" href="style.css" />
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=0.7,user-scalable=no" />
         <title>Communication with Unity</title>
        
         <script src="socket.io.js"></script>
@@ -12,17 +12,16 @@
         <script type="text/javascript" src="actions.js"></script>
         
          
-
-        
-        
     </head>
     <body>
         <!--<form id="form">
         Message: <input size="50" id="msg"> <input type="submit" value="Submit">
         </form>-->
        	<div id="menu">
+       		<img id="switcher" src="logoSwitcher.png" alt="logoSwitcher" width="10%" />
         	<input class="colors" type="button" value="Colors">
-        	<input class="logo" type="button" value="Logo">
+        	<input class="logo" type="button" value="Logos">
+			<input class="upload" type="button" value="Upload">
         	<input class="position" type="button" value="Position">
         	<input class="snapshot" type="button" value="Snapshot">
         </div>
@@ -31,33 +30,68 @@
         		<h3>COLORS</h3>
         	</div>
         	<div id="logo">
-        		<h3>LOGO</h3>
+        		<h3>LOGOS</h3>
+        		<span class="field_double">
+        			<input id="Snapshot" type="button" value="Upload">
+        		</span>
+        		&nbsp;
+        	</div>
+        	<div id="upload">
+        		<h3>UPLOAD</h3>
+        		<span class="field_double">
+        			<input id="Snapshot" type="button" value="Upload">
+        		</span>
+        		&nbsp;
         	</div>
         	<div id="position">
         		<h3>POSITION</h3>
+        		<span class="field_double">
+        			<input id="Snapshot" type="button" value="UP">
+        		</span>
+        		<span class="field">
+        			<input id="Snapshot" type="button" value="LEFT">
+        		</span>
+        		<span class="field">
+        			<input id="Snapshot" type="button" value="RIGHT">
+        		</span>
+        		<span class="field_double">
+        			<input id="Snapshot" type="button" value="DOWN">
+        		</span>
+        		&nbsp;
+        		<hr />
+        		<h3>ALIGN</h3>
+        		<span class="field">
+        			<input id="Snapshot" type="button" value="Front">
+        		</span>
+        		<span class="field">
+        			<input id="Snapshot" type="button" value="Back">
+        		</span>
+        		&nbsp;
         	</div>
         	<div id="snapshot">
+        		
         		<h3>SNAPSHOT</h3>
         		<span class="field">
-        			Entreprise
+        			<h5>Entreprise</h5>
         			<input id="entreprise" type="text" value="">
         		</span>
         		<span class="field">
-        			Nom
+        			<h5>Nom</h5>
         			<input id="nom" type="text" value="">
         		</span>
         		<span class="field">
-        			Prénom
+        			<h5>Prénom</h5>
         			<input id="prénom" type="text" value="">
         		</span>
         		<span class="field">
-        			Email
+        			<h5>Email</h5>
         			<input id="email" type="text" value="">
         		</span>
-        		<span class="field">
-        			
-        			<input id="Snapshot" type="button" value="Snapshot">
+        		<span class="field_double">
+        			<h5>&nbsp;</h5>
+        			<input id="Snapshot" type="button" value="Receive snapshot">
         		</span>
+        		&nbsp;
         	</div>
         </div>
         
