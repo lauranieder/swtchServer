@@ -28,9 +28,11 @@
         <div id="main">
         	<div id="colors" class="part">
         		<h3>COLORS</h3>
+                <div id="containerColor"></div>
         	</div>
         	<div id="logo" class="part">
         		<h3>LOGOS</h3>
+                <div id="containerLogo"></div>
         		<span class="field_double">
         			<input id="Snapshot" type="button" value="Upload">
         		</span>
@@ -47,31 +49,42 @@
         	<div id="position" class="part">
         		<h3>POSITION</h3>
         		<span class="field_double">
-        			<input id="Snapshot" type="button" value="UP">
+        			<input class="UpdatePosition" type="button" value="Up">
         		</span>
         		<span class="field">
-        			<input id="Snapshot" type="button" value="LEFT">
+        			<input class="UpdatePosition" type="button" value="Left">
         		</span>
         		<span class="field">
-        			<input id="Snapshot" type="button" value="RIGHT">
+        			<input class="UpdatePosition" type="button" value="Right">
         		</span>
         		<span class="field_double">
-        			<input id="Snapshot" type="button" value="DOWN">
+        			<input class="UpdatePosition" type="button" value="Down">
         		</span>
         		&nbsp;
         		<hr />
-        		<h3>ALIGN</h3>
+                <h3>SIZE</h3>
         		<span class="field">
-        			<input id="Snapshot" type="button" value="Front">
+        			<input class="UpdatePosition" type="button" value="Bigger">
         		</span>
         		<span class="field">
-        			<input id="Snapshot" type="button" value="Back">
+        			<input class="UpdatePosition" type="button" value="Smaller">
         		</span>
         		&nbsp;
+                 <hr />
+                <h3>ALIGN</h3>
+        		<span class="field">
+        			<input class="SetPosition" type="button" value="Front">
+        		</span>
+        		<span class="field">
+        			<input class="SetPosition" type="button" value="Back">
+        		</span>
+                &nbsp;
+               
         	</div>
         	<div id="snapshot" class="part">
         		
         		<h3>SNAPSHOT</h3>
+                <div id="takeScreenshot">Screenshot</div>
         		<span class="field">
         			<h5>Entreprise</h5>
         			<input id="entreprise" type="text" value="">
@@ -92,16 +105,16 @@
         			<h5>&nbsp;</h5>
         			<input id="Snapshot" type="button" value="Receive snapshot">
         		</span>
+                
         		&nbsp;
         	</div>
         </div>
         
         <span id="clothName"></span>
-        <div id="containerColor"></div>
-        <div id="containerLogo"></div>
-        <div id="setPos">Set position</div>
-        <div id="updatePos">Update position</div>
-        <div id="takeScreenshot">Screenshot</div>
+        
+        
+        
+        
         
     </body>
 </html>

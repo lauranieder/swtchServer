@@ -6,7 +6,7 @@ $(function() {
             var img = []; 
         
             //Connect to node server
-            var socket = io.connect('192.168.1.61:4567');
+            var socket = io.connect('http://localhost:4567');
             
             //Checkin that connection is established + identification
             socket.on('connect', function () {
@@ -206,19 +206,20 @@ $(function() {
                 }   
             }
                     
-             $( "#setPos" ).click(function() {  
+    
+            $( ".SetPosition" ).click(function() { 
+               
+                var position = $(this).val();
+                 console.log("SetPosition : "+position);
                 socket.emit('message', { client:'unity', action:"setPosition", x: "10", y:"20",size:"40",inverted:"false" });                   
             });  
-            
-             $( "#updatePos" ).click(function() {   
-                socket.emit('message', { client:'unity', action:"updatePosition", position:"up" });   
-            }); 
-            
-            $( "#takeScreenshot" ).click(function() {   
-                socket.emit('message', { client:'unity', action:"takeScreenshot" });   
-            }); 
-            
-            
-                        
+    
+            $( ".UpdatePosition" ).click(function() { 
+               
+                var position = $(this).val();
+                 console.log("UpdatePosition : "+position);
+                socket.emit('message', { client:'unity', action:"updatePosition", position:position });   
+            });  
+           
         }); //END OF JQUERY DOM READY FUNCTION
         
