@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Image Upload</title>
+        <script src="socket.io.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> <!--Jquery UI-->
+        <script src="http://malsup.github.com/jquery.form.js"></script>  <!--Jquey Form Plugin  http://jquery.malsup.com/form/#getting-started --> 
+        <script type="text/javascript">
+
+        $(function() {
+            
+            //Logo directory
+            var dir = "img/";
+            var imgName = [];
+            var img = []; 
+   
+            getImage();
+            
+            function getImage(){
+                 $.ajax({
+                  url: "filesManager.php?action=LoadImage",
+
+                }).done(function(result) {
+                     console.log("result :   "+result);
+                     var resultParsed = JSON.parse(result);
+
+                     for (index = 0; index < resultParsed.length; ++index) {
+
+                         var paths = resultParsed[index].split("/");
+                         var absoluteFilename = paths[paths.length-1];
+                         var infos = absoluteFilename.split("_");
+                         //console.log("name : "+absoluteFilename+"  /   infos.. : "+infos[0]);
+
+                         //Push value in an array
+                        imgName.push(absoluteFilename);
+                        $("#containerLogo").append($('<img class="imgLogo" src="'+ dir + absoluteFilename + '"></img>'));
+                    } 
+
+                   $( ".imgLogo" ).click(function() {
+                        
+                        var selectedURL = $(this).attr('src');
+                        console.log("selectedURL   "+selectedURL );
+                        socket.emit('message', { client:'unity', action:'changeImg', url: selectedURL });
+                    });
+
+                }).fail(function() {
+                  console.log("error");
+                });
+             }
+                       
+        }); //END OF JQUERY DOM READY FUNCTION
+        </script>
+        <style type="text/css">
+          
+        .imgLogo{
+            width: 100px;
+             height:100px;  
+            border: 1px solid transparent;
+        }
+        .imgLogo:hover{
+            opacity: 0.5;
+            border: 1px solid black;
+        }
+        </style>
+    </head>
+
+    <body>
+        <!--<form id="form">
+        Message: <input size="50" id="msg"> <input type="submit" value="Submit">
+        </form>-->
+        
+        <div id="containerLogo"></div>
+        
+        
+    </body>
+</html>
