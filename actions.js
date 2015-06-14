@@ -213,10 +213,10 @@ $(function() {
                 });
              }
     
-            
+            /*Create form around images To delete them*/
             function createForm(absoluteFilename){
                 $form = $('<form class="delete" action="filesManager.php" method="post"></form>');
-                $form.append('<img class="imgLogo" src="' +dir+absoluteFilename+'" />');
+                $form.append('<img class="imgLogoUpload" src="' +dir+absoluteFilename+'" />');
                 $form.append('<input type="hidden" value="'+dir+absoluteFilename+'" name="delete_file" />');
                 $form.append('</br>');
                 $form.append('<label for="prenom">'+absoluteFilename+'</label>');
@@ -226,9 +226,6 @@ $(function() {
     
             //SEND FORM WITH IMAGE TO PHP
             $('#uploadfile').ajaxForm({
-
-
-
                 beforeSend: function() {
                     status.empty();
 //                        var image = $('#image').val();

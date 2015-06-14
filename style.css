@@ -36,10 +36,15 @@ body {
 	position : relative;
 	display : block;
 	float: left;
+/*
 	width: 20%;
 	height:20px;
+*/
+    width: 20%;
+    height:40px;
+    margin:2%;
  }
-.imgLogo{
+.imgLogo, .imgLogoUpload{
     margin:5px;
     padding:5px;
 	width: 20%;
@@ -47,7 +52,7 @@ body {
 	border: 1px solid transparent;
     border-radius: 25px;
 }
-.imgLogo:hover{
+.imgLogo:hover, .imgLogoUpload:hover{
 	/*opacity: 0.5;*/
     
 	border: 1px solid black;
@@ -89,7 +94,7 @@ hr {
 	border-width: 0px 0px 1px 0px;
 }
 
-#containerLogo{
+#containerLogo, #containerColor{
     display:block;
 	border: none;
 	border-radius: 0px;
