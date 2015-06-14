@@ -312,7 +312,20 @@ $(function() {
                 var position = $(this).val();
                  console.log("ChangeCloth : "+position);
                 socket.emit('message', { client:'unity', action:"changeCloth", name:position });   
-            }); 
+            });
+    
+             $( "#Snapshot" ).click(function() { 
+               var entreprise = $( "#entreprise" ).val();
+                 var nom = $( "#nom" ).val();
+                 var prenom = $( "#prénom" ).val();
+                 var email = $( "#email" ).val();
+               
+                 console.log("takeSnapshot : "+entreprise+"  "+nom+"  "+prenom+"  "+email);
+                socket.emit('message', { client:'unity', action:"takeSnapshot", entreprise:entreprise, nom:nom, prenom:prenom, email:email });   
+            });
+    
+    
+                
            
         }); //END OF JQUERY DOM READY FUNCTION
         
